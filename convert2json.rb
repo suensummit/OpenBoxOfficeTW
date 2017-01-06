@@ -12,6 +12,6 @@ output = []
    output << Hash[*line.each_with_index.map {|col, index| [headers[index], is_int(col) ?    col.to_i : col]}.flatten]
  end
  File.open(ARGV[1], "w") do |f|
-   f << output
+   f.write(JSON.pretty_generate(output))
  end
 
